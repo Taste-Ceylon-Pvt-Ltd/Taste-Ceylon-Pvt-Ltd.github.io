@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All — Taste Ceylon | Premium Ceylon Cinnamon & Spices</title>
+    <title>Page Not Found — Taste Ceylon | 404 Error</title>
+    <meta name="description" content="Sorry, the page you're looking for cannot be found. Explore Taste Ceylon's premium Ceylon cinnamon and spices.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
             
             <nav>
                 <a href="index.html">Home</a>
-                <a href="shop.html" class="active">Shop</a>
+                <a href="shop.html">Shop</a>
                 <a href="about.html">About</a>
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
@@ -57,43 +58,50 @@
         <a href="contact.html">Contact</a>
     </div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="page-header-content">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Shop All</span>
+    <!-- 404 Content -->
+    <section class="error-page">
+        <div class="error-content">
+            <div class="error-illustration">
+                <div class="error-number">4<span>🪵</span>4</div>
             </div>
-            <h1>Shop All <span>Products</span></h1>
-            <p>Discover our complete collection of premium Ceylon cinnamon and authentic Sri Lankan spices.</p>
+            <h1>Oops! Page Not Found</h1>
+            <p>The page you're looking for seems to have disappeared into our spice gardens. Don't worry, let's help you find your way back.</p>
+            
+            <div class="error-search">
+                <form class="error-search-form">
+                    <input type="text" placeholder="Search our products..." class="form-input">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">← Back to Home</a>
+                <a href="shop.html" class="btn btn-secondary">Browse Products</a>
+            </div>
+            
+            <div class="error-links">
+                <h3>Popular Pages</h3>
+                <div class="quick-links">
+                    <a href="shop.html">🛒 Shop All Products</a>
+                    <a href="about.html">🏝️ About Ceylon Cinnamon</a>
+                    <a href="blog.html">📖 Recipes & Tips</a>
+                    <a href="contact.html">💬 Contact Us</a>
+                    <a href="faq.html">❓ FAQ</a>
+                    <a href="track-order.html">📦 Track Your Order</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Shop Section -->
-    <section class="section section-white">
+    <!-- Featured Products -->
+    <section class="section section-cream">
         <div class="container">
-            <!-- Filters -->
-            <div class="shop-filters">
-                <div class="filter-tabs">
-                    <button class="filter-tab active">All</button>
-                    <button class="filter-tab">Cinnamon Sticks</button>
-                    <button class="filter-tab">Ground</button>
-                    <button class="filter-tab">Collections</button>
-                    <button class="filter-tab">Gift Packs</button>
-                </div>
-                <select class="sort-select">
-                    <option>Sort by: Featured</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Newest First</option>
-                    <option>Best Selling</option>
-                </select>
+            <div class="section-header">
+                <span class="section-label">While You're Here</span>
+                <h2 class="section-title">Explore Our Best Sellers</h2>
             </div>
-
-            <!-- Products Grid -->
-            <div class="products-grid">
-                <!-- Product 1 -->
+            
+            <div class="products-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="product-card">
                     <div class="product-image">
                         🪵
@@ -123,11 +131,9 @@
                     </div>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
                         🥄
-                        <span class="product-badge" style="background: var(--forest-green);">New</span>
                         <div class="product-actions">
                             <button class="product-action-btn" aria-label="Add to wishlist">
                                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -153,7 +159,6 @@
                     </div>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
                         🫙
@@ -182,11 +187,10 @@
                     </div>
                 </div>
 
-                <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
                         🎁
-                        <span class="product-badge" style="background: var(--gold); color: var(--charcoal);">Limited</span>
+                        <span class="product-badge" style="background: var(--gold); color: var(--charcoal);">Popular</span>
                         <div class="product-actions">
                             <button class="product-action-btn" aria-label="Add to wishlist">
                                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -211,123 +215,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🪵
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Cinnamon Sticks</div>
-                        <h3 class="product-name">C5 Grade Cinnamon Quills</h3>
-                        <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            <small>(94)</small>
-                        </div>
-                        <div class="product-price">
-                            <span class="price">$16.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🥄
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Ground Cinnamon</div>
-                        <h3 class="product-name">Premium Ground Ceylon</h3>
-                        <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                            <small>(73)</small>
-                        </div>
-                        <div class="product-price">
-                            <span class="price">$14.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🫙
-                        <span class="product-badge" style="background: var(--burgundy);">Sale</span>
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Spice Collection</div>
-                        <h3 class="product-name">Curry Spice Master Set</h3>
-                        <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            <small>(112)</small>
-                        </div>
-                        <div class="product-price">
-                            <span class="price">$36.99<span class="price-old">$48.99</span></span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🎁
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Gift Pack</div>
-                        <h3 class="product-name">Ceylon Tea & Spice Box</h3>
-                        <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            <small>(87)</small>
-                        </div>
-                        <div class="product-price">
-                            <span class="price">$54.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -338,7 +225,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-text" style="font-size: 1.75rem; margin-bottom: 1rem;">Taste <span style="color: var(--cinnamon-brown);">Ceylon</span></div>
-                    <p>Bringing the authentic taste of Sri Lanka's finest cinnamon and spices to kitchens around the world. Quality, tradition, and flavor in every package.</p>
+                    <p>Bringing the authentic taste of Sri Lanka's finest cinnamon and spices to kitchens around the world.</p>
                     <div class="footer-social">
                         <a href="#" class="social-link" aria-label="Facebook">
                             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>

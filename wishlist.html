@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All — Taste Ceylon | Premium Ceylon Cinnamon & Spices</title>
+    <title>Wishlist — Taste Ceylon | Your Saved Items</title>
+    <meta name="description" content="View your saved items and favorite products from Taste Ceylon's collection of premium Ceylon cinnamon and spices.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
             
             <nav>
                 <a href="index.html">Home</a>
-                <a href="shop.html" class="active">Shop</a>
+                <a href="shop.html">Shop</a>
                 <a href="about.html">About</a>
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
@@ -30,7 +31,7 @@
                 <button class="nav-icon" aria-label="Search" onclick="window.location.href='search.html'">
                     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                 </button>
-                <button class="nav-icon" aria-label="Wishlist" onclick="window.location.href='wishlist.html'">
+                <button class="nav-icon active" aria-label="Wishlist" onclick="window.location.href='wishlist.html'">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 </button>
                 <button class="nav-icon" aria-label="Cart" onclick="window.location.href='cart.html'">
@@ -63,156 +64,151 @@
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
                 <span>/</span>
-                <span>Shop All</span>
+                <span>Wishlist</span>
             </div>
-            <h1>Shop All <span>Products</span></h1>
-            <p>Discover our complete collection of premium Ceylon cinnamon and authentic Sri Lankan spices.</p>
+            <h1>My <span>Wishlist</span></h1>
+            <p>Your saved items — ready when you are.</p>
         </div>
     </section>
 
-    <!-- Shop Section -->
+    <!-- Wishlist Section -->
     <section class="section section-white">
         <div class="container">
-            <!-- Filters -->
-            <div class="shop-filters">
-                <div class="filter-tabs">
-                    <button class="filter-tab active">All</button>
-                    <button class="filter-tab">Cinnamon Sticks</button>
-                    <button class="filter-tab">Ground</button>
-                    <button class="filter-tab">Collections</button>
-                    <button class="filter-tab">Gift Packs</button>
-                </div>
-                <select class="sort-select">
-                    <option>Sort by: Featured</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Newest First</option>
-                    <option>Best Selling</option>
-                </select>
+            <div class="wishlist-header">
+                <p class="wishlist-count"><span id="wishlistCount">4</span> items in your wishlist</p>
+                <button class="btn btn-secondary" id="addAllToCart">Add All to Cart</button>
             </div>
 
-            <!-- Products Grid -->
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🪵
-                        <span class="product-badge">Best Seller</span>
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
+            <div class="wishlist-grid" id="wishlistGrid">
+                <!-- Wishlist Item 1 -->
+                <div class="wishlist-item" data-id="1">
+                    <button class="wishlist-remove" aria-label="Remove from wishlist">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <div class="wishlist-item-image">🪵</div>
+                    <div class="wishlist-item-info">
                         <div class="product-category">Cinnamon Sticks</div>
                         <h3 class="product-name">Alba Grade Ceylon Quills</h3>
                         <div class="product-rating">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             <small>(128)</small>
                         </div>
-                        <div class="product-price">
+                        <div class="wishlist-item-price">
                             <span class="price">$24.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
                         </div>
+                        <div class="wishlist-item-stock in-stock">
+                            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            In Stock
+                        </div>
+                    </div>
+                    <div class="wishlist-item-actions">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        <a href="product.html" class="btn btn-secondary">View Details</a>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🥄
-                        <span class="product-badge" style="background: var(--forest-green);">New</span>
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
+                <!-- Wishlist Item 2 -->
+                <div class="wishlist-item" data-id="2">
+                    <button class="wishlist-remove" aria-label="Remove from wishlist">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <div class="wishlist-item-image">🥄</div>
+                    <div class="wishlist-item-info">
                         <div class="product-category">Ground Cinnamon</div>
                         <h3 class="product-name">Organic Cinnamon Powder</h3>
                         <div class="product-rating">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             <small>(89)</small>
                         </div>
-                        <div class="product-price">
+                        <div class="wishlist-item-price">
                             <span class="price">$18.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
                         </div>
+                        <div class="wishlist-item-stock in-stock">
+                            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            In Stock
+                        </div>
+                    </div>
+                    <div class="wishlist-item-actions">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        <a href="product.html" class="btn btn-secondary">View Details</a>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🫙
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Spice Collection</div>
-                        <h3 class="product-name">Ceylon Spice Trio Set</h3>
-                        <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                            <small>(67)</small>
-                        </div>
-                        <div class="product-price">
-                            <span class="price">$42.99<span class="price-old">$54.99</span></span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        🎁
-                        <span class="product-badge" style="background: var(--gold); color: var(--charcoal);">Limited</span>
-                        <div class="product-actions">
-                            <button class="product-action-btn" aria-label="Add to wishlist">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                            </button>
-                            <button class="product-action-btn" aria-label="Quick view">
-                                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-info">
+                <!-- Wishlist Item 3 -->
+                <div class="wishlist-item" data-id="3">
+                    <button class="wishlist-remove" aria-label="Remove from wishlist">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <div class="wishlist-item-image">🎁</div>
+                    <div class="wishlist-item-info">
                         <div class="product-category">Gift Pack</div>
                         <h3 class="product-name">Premium Gift Collection</h3>
                         <div class="product-rating">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             <small>(156)</small>
                         </div>
-                        <div class="product-price">
+                        <div class="wishlist-item-price">
                             <span class="price">$89.99</span>
-                            <button class="add-to-cart" aria-label="Add to cart">
-                                <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                            </button>
                         </div>
+                        <div class="wishlist-item-stock in-stock">
+                            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            In Stock
+                        </div>
+                    </div>
+                    <div class="wishlist-item-actions">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        <a href="product.html" class="btn btn-secondary">View Details</a>
                     </div>
                 </div>
 
-                <!-- Product 5 -->
+                <!-- Wishlist Item 4 -->
+                <div class="wishlist-item" data-id="4">
+                    <button class="wishlist-remove" aria-label="Remove from wishlist">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <div class="wishlist-item-image">🫙</div>
+                    <div class="wishlist-item-info">
+                        <div class="product-category">Spice Collection</div>
+                        <h3 class="product-name">Curry Spice Master Set</h3>
+                        <div class="product-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            <small>(112)</small>
+                        </div>
+                        <div class="wishlist-item-price">
+                            <span class="price">$36.99</span>
+                            <span class="price-old">$48.99</span>
+                        </div>
+                        <div class="wishlist-item-stock low-stock">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Only 3 left
+                        </div>
+                    </div>
+                    <div class="wishlist-item-actions">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        <a href="product.html" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty Wishlist -->
+            <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+                <div class="empty-wishlist-icon">💝</div>
+                <h3>Your Wishlist is Empty</h3>
+                <p>Save items you love by clicking the heart icon on any product.</p>
+                <a href="shop.html" class="btn btn-primary">Explore Products →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Section -->
+    <section class="section section-cream">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Discover More</span>
+                <h2 class="section-title">You Might Also Like</h2>
+            </div>
+            
+            <div class="products-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="product-card">
                     <div class="product-image">
                         🪵
@@ -241,7 +237,6 @@
                     </div>
                 </div>
 
-                <!-- Product 6 -->
                 <div class="product-card">
                     <div class="product-image">
                         🥄
@@ -270,11 +265,9 @@
                     </div>
                 </div>
 
-                <!-- Product 7 -->
                 <div class="product-card">
                     <div class="product-image">
                         🫙
-                        <span class="product-badge" style="background: var(--burgundy);">Sale</span>
                         <div class="product-actions">
                             <button class="product-action-btn" aria-label="Add to wishlist">
                                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -286,13 +279,13 @@
                     </div>
                     <div class="product-info">
                         <div class="product-category">Spice Collection</div>
-                        <h3 class="product-name">Curry Spice Master Set</h3>
+                        <h3 class="product-name">Ceylon Spice Trio Set</h3>
                         <div class="product-rating">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            <small>(112)</small>
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <small>(67)</small>
                         </div>
                         <div class="product-price">
-                            <span class="price">$36.99<span class="price-old">$48.99</span></span>
+                            <span class="price">$42.99<span class="price-old">$54.99</span></span>
                             <button class="add-to-cart" aria-label="Add to cart">
                                 <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                             </button>
@@ -300,7 +293,6 @@
                     </div>
                 </div>
 
-                <!-- Product 8 -->
                 <div class="product-card">
                     <div class="product-image">
                         🎁
@@ -338,7 +330,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-text" style="font-size: 1.75rem; margin-bottom: 1rem;">Taste <span style="color: var(--cinnamon-brown);">Ceylon</span></div>
-                    <p>Bringing the authentic taste of Sri Lanka's finest cinnamon and spices to kitchens around the world. Quality, tradition, and flavor in every package.</p>
+                    <p>Bringing the authentic taste of Sri Lanka's finest cinnamon and spices to kitchens around the world.</p>
                     <div class="footer-social">
                         <a href="#" class="social-link" aria-label="Facebook">
                             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -407,5 +399,66 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Wishlist functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove from wishlist
+            document.querySelectorAll('.wishlist-remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('.wishlist-item');
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.remove();
+                        updateWishlistCount();
+                    }, 300);
+                });
+            });
+            
+            // Add to cart from wishlist
+            document.querySelectorAll('.wishlist-item .add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cartCount = document.querySelector('.cart-count');
+                    cartCount.textContent = parseInt(cartCount.textContent) + 1;
+                    
+                    this.textContent = 'Added!';
+                    this.style.background = 'var(--forest-green)';
+                    setTimeout(() => {
+                        this.textContent = 'Add to Cart';
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+            
+            // Add all to cart
+            document.getElementById('addAllToCart').addEventListener('click', function() {
+                const items = document.querySelectorAll('.wishlist-item');
+                const cartCount = document.querySelector('.cart-count');
+                cartCount.textContent = parseInt(cartCount.textContent) + items.length;
+                
+                this.textContent = 'Added All!';
+                this.style.background = 'var(--forest-green)';
+                this.style.borderColor = 'var(--forest-green)';
+                this.style.color = 'white';
+                setTimeout(() => {
+                    this.textContent = 'Add All to Cart';
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                    this.style.color = '';
+                }, 2000);
+            });
+            
+            function updateWishlistCount() {
+                const items = document.querySelectorAll('.wishlist-item');
+                document.getElementById('wishlistCount').textContent = items.length;
+                
+                if (items.length === 0) {
+                    document.getElementById('wishlistGrid').style.display = 'none';
+                    document.querySelector('.wishlist-header').style.display = 'none';
+                    document.getElementById('emptyWishlist').style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
