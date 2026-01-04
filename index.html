@@ -2303,43 +2303,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Mobile menu toggle for index page
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const mobileNavClose = document.querySelector('.mobile-nav-close');
-
-        if (mobileMenuBtn && mobileNav) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileNav.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
-
-        if (mobileNavClose && mobileNav) {
-            mobileNavClose.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-
-        // Close mobile nav when clicking a link
-        if (mobileNav) {
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-
-        // Category card navigation
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', function() {
-                window.location.href = 'shop.html';
-            });
-        });
-    </script>
 </body>
 </html>
