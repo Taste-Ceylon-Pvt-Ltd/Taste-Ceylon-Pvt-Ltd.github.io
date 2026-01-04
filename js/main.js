@@ -87,6 +87,7 @@ const TasteCeylon = {
         
         if (existingIndex > -1) {
             wishlist.splice(existingIndex, 1);
+            this.saveWishlist(wishlist);
             return false; // Removed
         } else {
             wishlist.push({
@@ -96,6 +97,7 @@ const TasteCeylon = {
                 category: product.category,
                 emoji: product.emoji
             });
+            this.saveWishlist(wishlist);
             return true; // Added
         }
     },
@@ -112,6 +114,12 @@ const TasteCeylon = {
         return String(str).replace(/[&<>"']/g, function(m) {
             return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[m];
         });
+    },
+    
+    // Generate product ID from name
+    generateProductId: function(name) {
+        if (!name) return Date.now().toString();
+        return name.toLowerCase().replace(/\s+/g, '-');
     }
 };
 
@@ -172,7 +180,7 @@ if (mobileNav) {
 // Close mobile nav when clicking outside
 document.addEventListener('click', function(e) {
     if (mobileNav && mobileNav.classList.contains('active')) {
-        if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        if (!mobileNav.contains(e.target) && mobileMenuBtn && !mobileMenuBtn.contains(e.target)) {
             mobileNav.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -213,9 +221,10 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
             const priceEl = card.querySelector('.price');
             const imageEl = card.querySelector('.product-image');
             
+            const productName = nameEl ? nameEl.textContent : 'Product';
             const product = {
-                id: nameEl ? nameEl.textContent.toLowerCase().replace(/\s+/g, '-') : Date.now().toString(),
-                name: nameEl ? nameEl.textContent : 'Product',
+                id: TasteCeylon.generateProductId(productName),
+                name: productName,
                 category: categoryEl ? categoryEl.textContent : 'General',
                 price: priceEl ? parseFloat(priceEl.textContent.replace(/[^0-9.]/g, '')) : 0,
                 emoji: imageEl ? imageEl.textContent.trim().charAt(0) : '📦',
@@ -254,16 +263,16 @@ document.querySelectorAll('.product-action-btn[aria-label="Add to wishlist"]').f
             const priceEl = card.querySelector('.price');
             const imageEl = card.querySelector('.product-image');
             
+            const productName = nameEl ? nameEl.textContent : 'Product';
             const product = {
-                id: nameEl ? nameEl.textContent.toLowerCase().replace(/\s+/g, '-') : Date.now().toString(),
-                name: nameEl ? nameEl.textContent : 'Product',
+                id: TasteCeylon.generateProductId(productName),
+                name: productName,
                 category: categoryEl ? categoryEl.textContent : 'General',
                 price: priceEl ? parseFloat(priceEl.textContent.replace(/[^0-9.]/g, '')) : 0,
                 emoji: imageEl ? imageEl.textContent.trim().charAt(0) : '📦'
             };
             
             const added = TasteCeylon.toggleWishlist(product);
-            TasteCeylon.saveWishlist(TasteCeylon.getWishlist().concat(added ? [] : []).filter((v, i, a) => a.findIndex(t => t.id === v.id) === i));
             
             // Toggle visual state
             const svg = this.querySelector('svg');
@@ -482,7 +491,12 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(10px)';
                     setTimeout(() => {
-                        if (!card.closest('.filter-tab')?.classList.contains('active')) {
+                        // Only hide if this card doesn't match current filter
+                        const activeFilter = document.querySelector('.filter-tab.active');
+                        const activeFilterText = activeFilter ? activeFilter.textContent.toLowerCase().trim() : 'all';
+                        if (activeFilterText !== 'all' && !category.includes(activeFilterText) && 
+                            !(activeFilterText === 'collections' && (category.includes('collection') || category.includes('spice'))) &&
+                            !(activeFilterText === 'gift packs' && category.includes('gift'))) {
                             card.style.display = 'none';
                         }
                     }, 300);
