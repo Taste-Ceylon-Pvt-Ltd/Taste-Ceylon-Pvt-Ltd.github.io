@@ -103,11 +103,17 @@ forms.forEach(form => {
         
         // Check form type and handle accordingly
         if (this.classList.contains('newsletter-form')) {
-            const email = this.querySelector('input[type="email"]').value;
-            alert('Thank you for subscribing! We\'ll send updates to: ' + email);
+            const emailInput = this.querySelector('input[type="email"]');
+            if (emailInput && emailInput.validity.valid) {
+                // Sanitize email for display by escaping HTML entities
+                const email = emailInput.value.replace(/[&<>"']/g, function(m) {
+                    return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[m];
+                });
+                alert('Thank you for subscribing! We\'ll send updates to: ' + email);
+            }
         } else if (this.classList.contains('contact-form')) {
             alert('Thank you for your message! We\'ll get back to you soon.');
-        } else if (this.classList.contains('track-form')) {
+        } else if (this.classList.contains('track-order-form')) {
             const trackResult = document.querySelector('.track-result');
             if (trackResult) {
                 trackResult.classList.add('active');
@@ -154,7 +160,8 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
             if (filter === 'all') {
                 card.style.display = 'block';
             } else {
-                const category = card.querySelector('.product-category').textContent.toLowerCase();
+                const categoryEl = card.querySelector('.product-category');
+                const category = categoryEl ? categoryEl.textContent.toLowerCase() : '';
                 if (category.includes(filter)) {
                     card.style.display = 'block';
                 } else {
