@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Ceylon — Premium Ceylon Cinnamon & Authentic Sri Lankan Spices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cinnamon-brown: #B66E41;
+            --cinnamon-dark: #A55A31;
+            --cream: #F8F4EE;
+            --cream-dark: #EDE5D8;
+            --forest-green: #2F4F2F;
+            --charcoal: #222222;
+            --burgundy: #8B0000;
+            --burgundy-hover: #6B0000;
+            --gold: #D4AF37;
+            --warm-white: #FFFDF9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 244, 238, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background: rgba(248, 244, 238, 0.98);
+            border-bottom: 1px solid rgba(182, 110, 65, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '🍂';
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .logo-text span {
+            color: var(--cinnamon-brown);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cinnamon-brown);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--cinnamon-brown);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid rgba(182, 110, 65, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            background: var(--cinnamon-brown);
+            border-color: var(--cinnamon-brown);
+        }
+
+        .nav-icon:hover svg {
+            stroke: white;
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--charcoal);
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--burgundy);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--charcoal);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(182, 110, 65, 0.1) 0%, 
+                rgba(165, 90, 49, 0.15) 50%,
+                rgba(47, 79, 47, 0.1) 100%);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(182, 110, 65, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(47, 79, 47, 0.06) 0%, transparent 50%);
+        }
+
+        .hero-decorative {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.04;
+            color: var(--cinnamon-brown);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .hero-decorative.top {
+            top: 5%;
+            right: 5%;
+        }
+
+        .hero-decorative.bottom {
+            bottom: 10%;
+            left: 5%;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(182, 110, 65, 0.1);
+            border: 1px solid rgba(182, 110, 65, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cinnamon-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge::before {
+            content: '★';
+            color: var(--gold);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--cinnamon-brown);
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, rgba(182, 110, 65, 0.3), transparent);
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--forest-green);
+            font-weight: 500;
+        }
+
+        .hero-tag svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--forest-green);
+            stroke-width: 2.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--burgundy);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--burgundy-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 550px;
+            margin-left: auto;
+        }
+
+        .hero-image-main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            height: 85%;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            animation: morphing 8s ease-in-out infinite;
+            box-shadow: 0 30px 60px rgba(182, 110, 65, 0.3);
+        }
+
+        @keyframes morphing {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-float-card.card-1 {
+            top: 10%;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .hero-float-card.card-2 {
+            bottom: 15%;
+            right: 0;
+            animation-delay: 1s;
+        }
+
+        .hero-float-card.card-3 {
+            bottom: 30%;
+            left: -5%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .float-icon.organic {
+            background: rgba(47, 79, 47, 0.1);
+        }
+
+        .float-icon.export {
+            background: rgba(182, 110, 65, 0.1);
+        }
+
+        .float-icon.rating {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .float-text {
+            font-size: 0.85rem;
+        }
+
+        .float-text strong {
+            display: block;
+            color: var(--charcoal);
+            font-weight: 700;
+        }
+
+        .float-text span {
+            color: #888;
+            font-size: 0.75rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(182, 110, 65, 0.3), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cinnamon-brown);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(182, 110, 65, 0.1);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(182, 110, 65, 0.15);
+            border-color: var(--cinnamon-brown);
+        }
+
+        .category-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(182, 110, 65, 0.1), rgba(165, 90, 49, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+        }
+
+        .category-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cinnamon-brown);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .category-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(182, 110, 65, 0.05) 0%, transparent 50%);
+        }
+
+        .why-us-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-us-content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-us-content p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .features-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--charcoal);
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .why-us-visual {
+            position: relative;
+        }
+
+        .why-us-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-us-image::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--forest-green));
+            border-radius: 20px;
+            opacity: 0.1;
+        }
+
+        .spice-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .spice-item {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .spice-item:hover {
+            transform: scale(1.1);
+        }
+
+        .stat-badge {
+            position: absolute;
+            background: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-badge.top-right {
+            top: -20px;
+            right: 20px;
+        }
+
+        .stat-badge.bottom-left {
+            bottom: 20px;
+            left: -20px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cinnamon-brown);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Best Sellers */
+        .best-sellers {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: rgba(182, 110, 65, 0.3);
+        }
+
+        .product-image {
+            position: relative;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--burgundy);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-action-btn:hover {
+            background: var(--cinnamon-brown);
+        }
+
+        .product-action-btn:hover svg {
+            stroke: white;
+        }
+
+        .product-action-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--charcoal);
+            stroke-width: 2;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--cinnamon-brown);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-rating span {
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .product-rating small {
+            font-size: 0.75rem;
+            color: #888;
+            margin-left: 0.25rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .price-old {
+            font-size: 0.9rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+        }
+
+        .add-to-cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--burgundy);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--burgundy-hover);
+            transform: scale(1.1);
+        }
+
+        .add-to-cart svg {
+            width: 18px;
+            height: 18px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(182, 110, 65, 0.1) 0%, transparent 50%);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: 30px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+        }
+
+        .about-image-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            opacity: 0.3;
+        }
+
+        .about-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--cinnamon-brown);
+            border-radius: 20px;
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .about-content {
+            color: white;
+        }
+
+        .about-content .section-label {
+            color: var(--cinnamon-brown);
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .about-content h2 span {
+            color: var(--cinnamon-brown);
+        }
+
+        .about-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .highlight-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--cinnamon-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .highlight-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .testimonials-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem 0;
+        }
+
+        .testimonials-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            min-width: 400px;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(182, 110, 65, 0.1);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-color: var(--cinnamon-brown);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-author span {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-rating span {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--cinnamon-brown);
+            opacity: 0.3;
+            line-height: 0;
+            display: block;
+            margin-bottom: -0.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--cinnamon-brown), var(--cinnamon-dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter h2 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            background: white;
+            color: var(--charcoal);
+        }
+
+        .newsletter-input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--forest-green);
+            transform: scale(1.05);
+        }
+
+        /* Blog */
+        .blog {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--cream);
+            transition: all 0.4s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cinnamon-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--cinnamon-brown);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cinnamon-brown);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .blog-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--cinnamon-brown);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cinnamon-brown);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--cinnamon-brown);
+            stroke-width: 2;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 1;
+            }
+            
+            .hero-visual {
+                order: 0;
+            }
+            
+            .hero-image-container {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-tags {
+                justify-content: center;
+            }
+            
+            .why-us-container,
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-visual {
+                order: 1;
+            }
+            
+            .about-content {
+                order: 0;
+                text-align: center;
+            }
+            
+            .about-highlights {
+                justify-content: center;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
+            
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                min-width: 300px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-float-card {
+                display: none;
+            }
+        }
+
+        /* Smooth Scroll Offset for Fixed Header */
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">Taste <span>Ceylon</span></div>
+            </a>
+            
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#categories">Shop</a>
+                <a href="#about">About</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" aria-label="Search">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </button>
+                <button class="nav-icon" aria-label="Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+                <button class="nav-icon" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="cart-count">3</span>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <span class="hero-decorative top">Ceylon</span>
+        <span class="hero-decorative bottom">Spice</span>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Premium Export Quality</div>
+                <h1>Authentic <span>Ceylon Cinnamon</span> & Spices — Straight from Sri Lanka</h1>
+                <p class="hero-subtitle">Experience the golden essence of true Ceylon cinnamon. Hand-selected from the finest farms, bringing centuries of tradition to your kitchen.</p>
+                
+                <div class="hero-tags">
+                    <span class="hero-tag">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        100% Natural
+                    </span>
+                    <span class="hero-tag">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Hand-Selected
+                    </span>
+                    <span class="hero-tag">
+                        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="m16 12-4 4-4-4M12 8v8"/></svg>
+                        Export Quality
+                    </span>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#categories" class="btn btn-primary">Shop Now →</a>
+                    <a href="#about" class="btn btn-secondary">Explore Products</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-image-main">🍂</div>
+                    
+                    <div class="hero-float-card card-1">
+                        <div class="float-icon organic">🌿</div>
+                        <div class="float-text">
+                            <strong>100% Organic</strong>
+                            <span>Certified Natural</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-float-card card-2">
+                        <div class="float-icon export">🌍</div>
+                        <div class="float-text">
+                            <strong>Global Export</strong>
+                            <span>50+ Countries</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-float-card card-3">
+                        <div class="float-icon rating">⭐</div>
+                        <div class="float-text">
+                            <strong>4.9 Rating</strong>
+                            <span>2000+ Reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <span class="section-label">Our Collections</span>
+            <h2 class="section-title">Featured Categories</h2>
+            <p class="section-subtitle">Discover our premium range of authentic Ceylon spices, carefully curated for connoisseurs worldwide.</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🪵</div>
+                <h3>Cinnamon Sticks</h3>
+                <p>Premium Alba grade Ceylon cinnamon quills, hand-rolled with delicate layers.</p>
+                <a href="#" class="category-link">View Collection →</a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🥄</div>
+                <h3>Ground Cinnamon</h3>
+                <p>Finely milled powder with intense aroma, perfect for baking and beverages.</p>
+                <a href="#" class="category-link">View Collection →</a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🫙</div>
+                <h3>Spice Collections</h3>
+                <p>Curated bundles featuring Ceylon's finest spices for culinary adventures.</p>
+                <a href="#" class="category-link">View Collection →</a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🎁</div>
+                <h3>Gift Packs</h3>
+                <p>Elegant presentation boxes, perfect for gifting the taste of Ceylon.</p>
+                <a href="#" class="category-link">View Collection →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="why-us-pattern"></div>
+        <div class="why-us-container">
+            <div class="why-us-content">
+                <span class="section-label">Why Choose Us</span>
+                <h2>The Taste Ceylon <span style="color: var(--cinnamon-brown);">Difference</span></h2>
+                <p>We bring you the authentic taste of Sri Lanka's legendary cinnamon, sourced directly from local farmers who have perfected their craft over generations.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>100% Authentic Ceylon Cinnamon</h4>
+                            <p>True Cinnamomum verum from Sri Lanka, not cassia substitutes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Sourced Directly from Sri Lankan Farmers</h4>
+                            <p>Supporting local communities with fair trade practices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Export-Grade Quality & Trusted Worldwide</h4>
+                            <p>Meeting international standards for premium spice exports</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="m16 8 5 3-5 3V8z"/><path d="M21 3v18"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Fast & Secure Worldwide Shipping</h4>
+                            <p>Carefully packaged to preserve freshness and aroma</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="why-us-visual">
+                <div class="why-us-image">
+                    <div class="spice-display">
+                        <div class="spice-item">🍂</div>
+                        <div class="spice-item">🌿</div>
+                        <div class="spice-item">🫚</div>
+                        <div class="spice-item">🌶️</div>
+                        <div class="spice-item">🧄</div>
+                        <div class="spice-item">🫛</div>
+                        <div class="spice-item">🌰</div>
+                        <div class="spice-item">🍃</div>
+                        <div class="spice-item">🪴</div>
+                    </div>
+                    
+                    <div class="stat-badge top-right">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    
+                    <div class="stat-badge bottom-left">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers">
+        <div class="section-header">
+            <span class="section-label">Top Picks</span>
+            <h2 class="section-title">Best Sellers</h2>
+            <p class="section-subtitle">Our most loved products, trusted by spice enthusiasts around the globe.</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    🪵
+                    <span class="product-badge">Best Seller</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="product-action-btn" aria-label="Quick view">
+                            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Cinnamon Sticks</div>
+                    <h3 class="product-name">Alba Grade Ceylon Quills</h3>
+                    <div class="product-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        <small>(128)</small>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">$24.99</span>
+                        <button class="add-to-cart" aria-label="Add to cart">
+                            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    🥄
+                    <span class="product-badge" style="background: var(--forest-green);">New</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="product-action-btn" aria-label="Quick view">
+                            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Ground Cinnamon</div>
+                    <h3 class="product-name">Organic Cinnamon Powder</h3>
+                    <div class="product-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        <small>(89)</small>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">$18.99</span>
+                        <button class="add-to-cart" aria-label="Add to cart">
+                            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    🫙
+                    <div class="product-actions">
+                        <button class="product-action-btn" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="product-action-btn" aria-label="Quick view">
+                            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Spice Collection</div>
+                    <h3 class="product-name">Ceylon Spice Trio Set</h3>
+                    <div class="product-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                        <small>(67)</small>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">$42.99<span class="price-old">$54.99</span></span>
+                        <button class="add-to-cart" aria-label="Add to cart">
+                            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    🎁
+                    <span class="product-badge" style="background: var(--gold); color: var(--charcoal);">Limited</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="product-action-btn" aria-label="Quick view">
+                            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Gift Pack</div>
+                    <h3 class="product-name">Premium Gift Collection</h3>
+                    <div class="product-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        <small>(156)</small>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">$89.99</span>
+                        <button class="add-to-cart" aria-label="Add to cart">
+                            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-visual">
+                <div class="about-image-wrapper">
+                    <div class="about-image-inner">🏝️</div>
+                </div>
+                <div class="about-accent"></div>
+            </div>
+            
+            <div class="about-content">
+                <span class="section-label">Our Heritage</span>
+                <h2>The Golden <span>Spice of Ceylon</span></h2>
+                <p class="about-text">For centuries, Ceylon cinnamon has been treasured as "the true cinnamon" — a spice so prized that it was once worth more than gold. Grown exclusively in the lush tropical climate of Sri Lanka, our cinnamon carries the authentic essence of this ancient tradition.</p>
+                <p class="about-text">Unlike common cassia, true Ceylon cinnamon offers a delicate, complex flavor with subtle citrus notes and a naturally sweet finish. Its paper-thin layers and low coumarin content make it the choice of discerning chefs and health-conscious consumers worldwide.</p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">✓</div>
+                        <span class="highlight-text">Delicate, Sweet Aroma</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">✓</div>
+                        <span class="highlight-text">Low Coumarin Content</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">✓</div>
+                        <span class="highlight-text">Multi-layered Quills</span>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">✓</div>
+                        <span class="highlight-text">Subtle Citrus Notes</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-primary" style="background: var(--cinnamon-brown);">Discover Our Story →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">Join thousands of satisfied customers who have discovered the authentic taste of Ceylon.</p>
+        </div>
+        
+        <div class="testimonials-wrapper">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-author">
+                            <h4>Sarah Mitchell</h4>
+                            <span>Professional Baker, USA</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">The difference in quality is remarkable! The aroma alone tells you this is the real deal. My cinnamon rolls have never tasted better. Will never go back to store-bought cinnamon.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">JC</div>
+                        <div class="testimonial-author">
+                            <h4>James Chen</h4>
+                            <span>Home Chef, Australia</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">Finally found authentic Ceylon cinnamon! The delicate flavor is perfect for my Sri Lankan recipes. Fast shipping to Australia and beautifully packaged. Highly recommend!</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">ER</div>
+                        <div class="testimonial-author">
+                            <h4>Emma Rodriguez</h4>
+                            <span>Health Coach, UK</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">As a health coach, I only recommend the best to my clients. Taste Ceylon's low-coumarin cinnamon is exactly what I've been looking for. Pure, authentic, and absolutely delicious.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MK</div>
+                        <div class="testimonial-author">
+                            <h4>Michael Kumar</h4>
+                            <span>Restaurant Owner, Canada</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">We've been using Taste Ceylon for our restaurant for two years now. The consistent quality and authentic flavor keeps our customers coming back. Exceptional product!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2>Get Exclusive Offers & Spice Secrets</h2>
+            <p>Subscribe to our newsletter for special discounts, recipes, and the latest from Ceylon's spice gardens.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="blog" id="blog">
+        <div class="section-header">
+            <span class="section-label">From Our Kitchen</span>
+            <h2 class="section-title">Spice Stories & Recipes</h2>
+            <p class="section-subtitle">Explore the world of Ceylon spices with our curated articles and recipes.</p>
+        </div>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">
+                    🥐
+                    <span class="blog-category">Recipes</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">December 28, 2025 · 5 min read</div>
+                    <h3 class="blog-title">Perfect Cinnamon Rolls: A Step-by-Step Guide</h3>
+                    <p class="blog-excerpt">Discover how Ceylon cinnamon transforms ordinary cinnamon rolls into an extraordinary treat...</p>
+                    <a href="#" class="blog-link">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">
+                    🩺
+                    <span class="blog-category">Health</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">December 20, 2025 · 7 min read</div>
+                    <h3 class="blog-title">10 Health Benefits of True Ceylon Cinnamon</h3>
+                    <p class="blog-excerpt">From blood sugar support to anti-inflammatory properties, explore the science behind...</p>
+                    <a href="#" class="blog-link">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">
+                    🏝️
+                    <span class="blog-category">Culture</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">December 15, 2025 · 6 min read</div>
+                    <h3 class="blog-title">Journey Through Sri Lanka's Spice Gardens</h3>
+                    <p class="blog-excerpt">Take a virtual tour of the lush cinnamon plantations where our premium spices are grown...</p>
+                    <a href="#" class="blog-link">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text" style="font-size: 1.75rem; margin-bottom: 1rem;">Taste <span style="color: var(--cinnamon-brown);">Ceylon</span></div>
+                    <p>Bringing the authentic taste of Sri Lanka's finest cinnamon and spices to kitchens around the world. Quality, tradition, and flavor in every package.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 0 0-4.37 23.17c-.1-.94-.19-2.38.04-3.41l1.38-5.87s-.35-.7-.35-1.74c0-1.63.95-2.85 2.12-2.85 1 0 1.49.75 1.49 1.66 0 1-.64 2.51-.98 3.9-.28 1.18.59 2.14 1.75 2.14 2.1 0 3.72-2.22 3.72-5.42 0-2.84-2.04-4.82-4.95-4.82-3.37 0-5.35 2.53-5.35 5.14 0 1.02.39 2.11.88 2.7a.35.35 0 0 1 .08.34l-.33 1.33c-.05.22-.17.27-.4.16-1.49-.69-2.42-2.87-2.42-4.62 0-3.76 2.73-7.21 7.87-7.21 4.13 0 7.35 2.95 7.35 6.88 0 4.11-2.59 7.42-6.19 7.42-1.21 0-2.35-.63-2.74-1.37l-.75 2.84c-.27 1.04-1 2.35-1.49 3.14A12 12 0 1 0 12 0z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop All</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns Policy</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        info@tasteceylon.lk
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        +94 11 234 5678
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Colombo, Sri Lanka
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Taste Ceylon. All rights reserved. | TasteCeylon.lk</p>
+                <div class="payment-methods">
+                    <div class="payment-icon">VISA</div>
+                    <div class="payment-icon">MC</div>
+                    <div class="payment-icon">AMEX</div>
+                    <div class="payment-icon">PP</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert('Thank you for subscribing! We\'ll send updates to: ' + email);
+            this.reset();
+        });
+
+        // Add to cart animation
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const cartCount = document.querySelector('.cart-count');
+                const currentCount = parseInt(cartCount.textContent);
+                cartCount.textContent = currentCount + 1;
+                
+                // Animation feedback
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                }, 100);
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.category-card, .product-card, .testimonial-card, .blog-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
