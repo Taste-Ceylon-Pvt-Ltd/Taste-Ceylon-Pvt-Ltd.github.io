@@ -36,7 +36,7 @@
                 </button>
                 <button class="nav-icon" aria-label="Cart" onclick="window.location.href='cart.html'">
                     <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                    <span class="cart-count">3</span>
+                    <span class="cart-count">0</span>
                 </button>
             </div>
             
@@ -398,7 +398,8 @@
     <script>
         // Cart functionality
         document.addEventListener('DOMContentLoaded', function() {
-            updateCartSummary();
+            // Load cart from localStorage or use demo items
+            loadCart();
             
             // Quantity controls
             document.querySelectorAll('.quantity-btn').forEach(btn => {
@@ -414,6 +415,7 @@
                     
                     updateItemPrice(this.closest('.cart-item'));
                     updateCartSummary();
+                    saveCartState();
                 });
             });
             
@@ -426,6 +428,7 @@
                     
                     updateItemPrice(this.closest('.cart-item'));
                     updateCartSummary();
+                    saveCartState();
                 });
             });
             
@@ -438,21 +441,53 @@
                     setTimeout(() => {
                         item.remove();
                         updateCartSummary();
+                        saveCartState();
                         checkEmptyCart();
                     }, 300);
                 });
             });
             
             // Coupon code
-            document.querySelector('.coupon-btn').addEventListener('click', function() {
-                const code = document.getElementById('couponCode').value.trim().toUpperCase();
-                if (code === 'CEYLON10') {
-                    alert('Coupon applied! 10% discount added.');
-                } else if (code) {
-                    alert('Invalid coupon code. Please try again.');
-                }
-            });
+            const couponBtn = document.querySelector('.coupon-btn');
+            if (couponBtn) {
+                couponBtn.addEventListener('click', function() {
+                    const code = document.getElementById('couponCode').value.trim().toUpperCase();
+                    if (code === 'CEYLON10') {
+                        if (typeof showNotification === 'function') {
+                            showNotification('Coupon applied! 10% discount added.', 'success');
+                        } else {
+                            alert('Coupon applied! 10% discount added.');
+                        }
+                        applyCoupon(0.10);
+                    } else if (code === 'FREESHIP') {
+                        if (typeof showNotification === 'function') {
+                            showNotification('Free shipping applied!', 'success');
+                        } else {
+                            alert('Free shipping applied!');
+                        }
+                    } else if (code) {
+                        if (typeof showNotification === 'function') {
+                            showNotification('Invalid coupon code. Please try again.', 'error');
+                        } else {
+                            alert('Invalid coupon code. Please try again.');
+                        }
+                    }
+                });
+            }
         });
+        
+        function loadCart() {
+            // Check if there are items in the cart from localStorage
+            if (typeof TasteCeylon !== 'undefined') {
+                const storedCart = TasteCeylon.getCart();
+                if (storedCart.length > 0) {
+                    // Update cart display from localStorage
+                    TasteCeylon.updateCartCount();
+                }
+            }
+            updateCartSummary();
+            checkEmptyCart();
+        }
         
         function updateItemPrice(item) {
             const price = parseFloat(item.dataset.price);
@@ -473,18 +508,64 @@
                 itemCount += quantity;
             });
             
-            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('total').textContent = '$' + subtotal.toFixed(2);
-            document.querySelector('.summary-row span').textContent = 'Subtotal (' + itemCount + ' items)';
-            document.querySelector('.cart-count').textContent = itemCount;
+            const subtotalEl = document.getElementById('subtotal');
+            const totalEl = document.getElementById('total');
+            const summaryRow = document.querySelector('.summary-row span');
+            
+            if (subtotalEl) subtotalEl.textContent = '$' + subtotal.toFixed(2);
+            if (totalEl) totalEl.textContent = '$' + subtotal.toFixed(2);
+            if (summaryRow) summaryRow.textContent = 'Subtotal (' + itemCount + ' items)';
+            
+            // Update cart count in header
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = itemCount;
+            });
+        }
+        
+        function saveCartState() {
+            // Save current cart state to localStorage
+            const items = document.querySelectorAll('.cart-item');
+            const cart = [];
+            
+            items.forEach(item => {
+                cart.push({
+                    id: item.dataset.id,
+                    name: item.querySelector('.cart-item-name').textContent,
+                    category: item.querySelector('.cart-item-category').textContent,
+                    price: parseFloat(item.dataset.price),
+                    quantity: parseInt(item.querySelector('.quantity-input').value),
+                    emoji: item.querySelector('.cart-item-image').textContent.trim()
+                });
+            });
+            
+            if (typeof TasteCeylon !== 'undefined') {
+                TasteCeylon.saveCart(cart);
+            }
+        }
+        
+        function applyCoupon(discount) {
+            const totalEl = document.getElementById('total');
+            if (totalEl) {
+                const subtotal = parseFloat(document.getElementById('subtotal').textContent.replace('$', ''));
+                const discountedTotal = subtotal * (1 - discount);
+                totalEl.textContent = '$' + discountedTotal.toFixed(2);
+            }
         }
         
         function checkEmptyCart() {
             const items = document.querySelectorAll('.cart-item');
+            const cartItems = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            const emptyCart = document.getElementById('emptyCart');
+            
             if (items.length === 0) {
-                document.getElementById('cartItems').style.display = 'none';
-                document.getElementById('cartSummary').style.display = 'none';
-                document.getElementById('emptyCart').style.display = 'block';
+                if (cartItems) cartItems.style.display = 'none';
+                if (cartSummary) cartSummary.style.display = 'none';
+                if (emptyCart) emptyCart.style.display = 'block';
+            } else {
+                if (cartItems) cartItems.style.display = 'block';
+                if (cartSummary) cartSummary.style.display = 'block';
+                if (emptyCart) emptyCart.style.display = 'none';
             }
         }
     </script>
